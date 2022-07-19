@@ -1,0 +1,55 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "config.gradle"
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.2"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+    subprojects {
+        afterEvaluate { project ->
+            if (project.hasProperty("android")) {
+                android {
+                    compileSdk rootProject.ext.android.compileSdk
+                    defaultConfig {
+                        minSdk rootProject.ext.android.minSdk
+                        targetSdk rootProject.ext.android.targetSdk
+                        versionCode rootProject.ext.android.versionCode
+                        versionName rootProject.ext.android.versionName
+                    }
+                    compileOptions {
+                        sourceCompatibility JavaVersion.VERSION_1_8
+                        targetCompatibility JavaVersion.VERSION_1_8
+                    }
+                    buildFeatures {
+                        dataBinding true
+                    }
+                }
+                dependencies {
+                    implementation rootProject.ext.baseDeps.appcompat
+                    implementation rootProject.ext.baseDeps.material
+                    implementation rootProject.ext.baseDeps.constraintlayout
+                    testImplementation rootProject.ext.baseDeps.junit
+                    androidTestImplementation rootProject.ext.baseDeps.test_ext
+                    androidTestImplementation rootProject.ext.baseDeps.test_espresso
+                }
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

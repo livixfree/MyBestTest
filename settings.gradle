@@ -1,0 +1,34 @@
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        google()
+//        mavenCentral()
+//        jcenter() // Warning: this repository is going to shut down soon
+//    }
+//    subprojects{
+//        afterEvaluate{ project ->
+//            if (project.hasProperty("android")) {
+//                android{
+//                    compileSdk rootProject.ext.android.compileSdk
+//                    defaultConfig{
+//                        minSdk rootProject.ext.android.minSdk
+//                        targetSdk rootProject.ext.android.targetSdk
+//                        versionCode rootProject.ext.android.versionCode
+//                        versionName rootProject.ext.android.versionName
+//                    }
+//                    compileOptions {
+//                        sourceCompatibility JavaVersion.VERSION_1_8
+//                        targetCompatibility JavaVersion.VERSION_1_8
+//                    }
+//                    buildFeatures{
+//                        dataBinding true
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
+rootProject.name = "MyBestTest"
+include ':app'
+include ':lib_base'
+include ':module_home'
