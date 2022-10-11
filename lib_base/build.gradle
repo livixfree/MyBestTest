@@ -31,4 +31,5 @@ dependencies {
     api rootProject.ext.deps.autodispose
     api rootProject.ext.deps.autodispose_lifecycle
 
+    api 'com.zszhizhu.stockLib:wlbStock:1.0.1'
 }

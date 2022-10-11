@@ -17,6 +17,15 @@ allprojects {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+
+        //银证通
+        maven {
+            url codingArtifactsRepoUrl
+            credentials {
+                username = codingArtifactsGradleUsername
+                password = codingArtifactsGradlePassword
+            }
+        }
     }
     subprojects {
         afterEvaluate { project ->
